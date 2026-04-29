@@ -1,7 +1,7 @@
 ---
 name: "Pedaling the Windy City: Visualizing Divvy Ridership in July 2025"
 tools: [Python, HTML, vega-lite]
-image: assets/pngs/shapes.png
+image: assets/pngs/chicago_geo.png
 description: An interactive data visualization article exploring Divvy bike share ridership patterns in Chicago, July 2025.
 custom_js:
   - vega.min
@@ -52,9 +52,9 @@ In July 2025, rides were split between annual members and casual riders. Members
 
 ## Citations
 
-- All visualizations created by Matthew Zheng. Analysis notebook linked in button below.
 - Data source: [Divvy System Data](https://divvy-tripdata.s3.amazonaws.com/202507-divvy-tripdata.zip)
 - Chicago Neighborhoods GeoJSON: [Chicago Data Portal](https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Neighborhoods/bbvz-uum9)
+- All visualizations and contextual visualizations created by Matthew Zheng. Analysis notebook linked in button below.
 
 
 <div class="left">
@@ -62,7 +62,7 @@ In July 2025, rides were split between annual members and casual riders. Members
 </div>
 
 <div class="right">
-{% include elements/button.html link="PLACEHOLDER" text="The Analysis" %}
+{% include elements/button.html link="https://github.com/mzheng-01/mzheng-01.github.io/blob/main/python_notebooks/final_project_plots.ipynb" text="The Analysis" %}
 </div>
 
 
