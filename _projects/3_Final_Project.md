@@ -52,6 +52,8 @@ actually driving ridership in July?
 > Hover over any circle to see the station name and total number of rides.
 
 <vegachart schema-url="{{ site.baseurl }}/assets/json/divvy_map.json" style="width: 100%"></vegachart>
+*Created by Matthew Zheng. [View the analysis notebook](https://github.com/mzheng-01/mzheng-01.github.io/blob/main/python_notebooks/final_project_plots.ipynb)*
+
 
 ---
 
@@ -107,6 +109,7 @@ explored above reveal where each type of rider is showing up.
 > Hover over each slice to see the exact count and percentage.
 
 <vegachart schema-url="{{ site.baseurl }}/assets/json/divvy_donut.json" style="width: 100%"></vegachart>
+*Created by Matthew Zheng. [View the analysis notebook](https://github.com/mzheng-01/mzheng-01.github.io/blob/main/python_notebooks/final_project_plots.ipynb)*
 
 ---
 
