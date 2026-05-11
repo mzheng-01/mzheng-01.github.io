@@ -1,5 +1,5 @@
 ---
-name: "Pedaling the Windy City: Visualizing Divvy Ridership in July 2025"
+name: "Pedaling the Windy City: Visualizing Divvy Ridership from July 2025"
 tools: [Python, HTML, vega-lite]
 image: assets/pngs/chicago_geo.png
 description: An interactive data visualization article exploring Divvy bike share ridership patterns in Chicago, July 2025.
@@ -15,14 +15,39 @@ custom_js:
 ### By Matthew Zheng
 
 ---
+## Introduction
 
-Divvy is Chicago's public bike share system, operated by Lyft, with hundreds of docking stations spread across the city. Riders can pick up a bike at any station and return it to any other station, making it a flexible option for short trips around the city. This analysis looks at over 500,000 Divvy rides taken in July 2025, one of the busiest months of the year for cycling in Chicago. The dataset includes information about where each ride started, when it started, how long it lasted, and whether the rider was a casual user or an annual member.
+Chicago's Divvy bike share network is one of the largest in the United States, with hundreds
+of docking stations spread across the city. Every time someone unlocks a bike, a record is
+created: where they started, when they left, and whether they are a paying annual member or
+a casual day-pass rider. That distinction, member versus casual, sits at the heart of a real
+business question that Divvy and the City of Chicago face every year. Members provide
+predictable, year-round revenue, while casual riders tend to cluster around tourism and
+warm-weather recreation. Understanding who is riding, from where, and at what times of day
+is not just interesting trivia. It reveals whether the system is primarily serving Chicago
+residents as a daily transportation tool or tourists as a summertime attraction. If the answer
+is mostly the latter, that has direct implications for where new stations should be built,
+which neighborhoods are underserved, and how the system should be marketed. This analysis
+looks at Divvy rides taken in July 2025, one of the busiest months of the year for cycling
+in Chicago, to answer a simple but important question: is Divvy a commuter tool, a leisure
+service, or something in between?
 
 ---
 
 ## Where Are People Riding?
 
-Nearly all of the busiest stations are concentrated along the lakefront and in the downtown Loop area, with Millennium Park and DuSable Lake Shore Drive among the most popular starting points. The dominance of lakefront stations suggests that a significant portion of July ridership is driven by recreational use along the scenic lakefront trail.
+The map below shows the 20 busiest starting stations in July 2025, with circle size
+representing total rides. The geographic pattern is immediately striking. Nearly every
+high-traffic station clusters along the lakefront or near major downtown attractions, with
+the biggest circles concentrated around well-known destinations like Streeter Drive,
+Millennium Park, and DuSable Lake Shore Drive. Stations in residential neighborhoods on the
+North, West, and South Sides are almost entirely absent from the top 20. What makes this
+especially telling is that the busiest lakefront stations skew heavily toward casual riders
+rather than annual members, suggesting that the volume being generated there comes primarily
+from tourists and recreational users rather than daily commuters. This geographic
+concentration raises a question worth holding in mind as you look at the next chart: if the
+busiest stations are tourist and leisure destinations, what does that tell us about who is
+actually driving ridership in July?
 
 > Hover over any circle to see the station name and total number of rides.
 
@@ -32,7 +57,34 @@ Nearly all of the busiest stations are concentrated along the lakefront and in t
 
 ## When and How Long Are People Riding?
 
-Selecting a station in the dashboard reveals two patterns about when and how people ride. The hour of day chart shows that most stations see peak ridership in the late afternoon between 4pm and 6pm, consistent with an evening commute or post-work recreational ride. The heatmap of ride duration by hour tells a more nuanced story: shorter rides of under 20 minutes tend to cluster during commute hours, while longer rides of 30 minutes or more are more common in the middle of the day, suggesting a mix of practical commuting and leisurely exploration.
+The interactive dashboard below lets you click on any station in the bar chart to filter the
+other two charts to that station's specific patterns. This interactivity matters because
+different stations tell very different stories that the overall citywide picture can obscure.
+
+Across nearly every station, the hour-of-day chart shows rides building steadily through the
+day and peaking in the late afternoon and evening hours. This consistent pattern suggests
+that regardless of whether a station serves commuters or recreational riders, the end of the
+working day is when Chicagoans are most likely to get on a bike. What changes from station
+to station is the shape of the morning. Stations like Kingsbury and Kinzie and Clinton and
+Washington show a much more pronounced morning spike alongside the evening one, the classic
+double-hump signature of a commuter station. At stations like Theater on the Lake or Dusable
+Harbor that morning spike is far flatter, suggesting fewer people are starting rides there on
+their way to work.
+
+The most striking exception is Streeter Dr and Grand Ave, the single busiest station in the
+entire system. Unlike every other station in the top 20, its hour-of-day chart peaks in the
+mid-afternoon rather than the evening, and rides are spread broadly across the whole day from
+mid-morning onward. This is the clearest visual signal in the dashboard that the top of the
+rankings is being driven by a fundamentally different kind of use, recreational and tourist
+riders filling their afternoons, rather than the commuter-driven evening surge seen
+everywhere else.
+
+The duration heatmap tells a consistent story across all stations: the darkest concentration
+of rides sits in the short duration range, confirming that quick trips dominate the system
+regardless of where you start. However, stations with a stronger recreational character tend
+to show a slightly wider spread of ride durations, with more activity in the longer ranges
+compared to the tighter, short-duration clusters visible at busier commuter-adjacent stations.
+
 
 > Click any station in the bar chart to filter the other two charts. Click again to deselect.
 
@@ -42,12 +94,38 @@ Selecting a station in the dashboard reveals two patterns about when and how peo
 
 ## Who Is Riding?
 
-In July 2025, rides were split between annual members and casual riders. Members are riders with an annual Divvy subscription, while casual riders purchased a single ride or day pass. The breakdown reveals how much of the system's usage comes from tourists and occasional riders versus committed regular users.
+The donut chart below shows the overall split between annual members and casual riders for
+July 2025. Members hold a majority of rides, but the casual share is substantial enough that
+it cannot be dismissed as occasional or incidental use. This near-even split is notable for
+a transit system, where you might expect committed regular users to dominate. When you
+consider that the busiest stations skew heavily toward casual riders and that those locations
+show a broader, less commute-driven hourly pattern, the overall casual share starts to make
+more sense. July ridership is not simply a commuter story with some tourists on the side. It
+is genuinely split between two different kinds of use, and the geographic and timing patterns
+explored above reveal where each type of rider is showing up.
 
 > Hover over each slice to see the exact count and percentage.
 
 <vegachart schema-url="{{ site.baseurl }}/assets/json/divvy_donut.json" style="width: 100%"></vegachart>
 
+---
+
+## Conclusion
+
+Three trends emerge from this data that together tell a coherent story. First, Divvy's
+busiest stations are heavily concentrated on the lakefront and at tourist destinations, and
+those stations skew strongly toward casual riders, suggesting that geography and tourism are
+major drivers of summer volume. Second, while a consistent evening peak exists across the
+system, the character of individual stations varies meaningfully: commuter stations show a
+strong morning spike alongside the evening peak, while recreational stations like Streeter
+Drive show a broad mid-afternoon pattern with almost no morning activity at all. Third, the
+near-even split between members and casual riders confirms that July ridership is genuinely
+serving two audiences at once rather than one dominant use case. For city planners and Divvy
+alike, this points to two concrete opportunities: expanding the network into underserved
+residential neighborhoods where everyday commuters would benefit most, and designing
+incentives to convert the large base of summer casual riders into year-round members. The
+data draws a clear line between where Divvy is popular today and where it could be more
+useful tomorrow.
   
 
 ## Citations
